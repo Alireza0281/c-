@@ -1,0 +1,131 @@
+﻿@model ApiSample.Models.ViewModel.SmsViewModel
+@{
+    ViewBag.Title = " ارسال پیامک ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--simplesend--------------------------------------------------------------------------------------------------------------------------------->
+<div class="row">
+    <div class="col-md-12 col-sm-12 top-2">
+        <p class="heder" id="simplesend">ارسال تکی و ارسال گروهی </p>
+        <div class="form-horizontal">
+            @if (TempData["Massage"] != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12   padding-right-0 padding-left-0  float-right   ">
+                        @Html.Raw(TempData["Massage"])
+                    </div>
+                </div>
+            }
+
+            @using (Html.BeginForm("SmsSend", "Send", new { area = string.Empty }, FormMethod.Post, htmlAttributes: new { @class = "margin-bottom-0", @id = "" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.ActionType)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.DropDownListFor(model => model.ActionType, new List<SelectListItem> { new SelectListItem() { Text = "ارسال تکی", Value = "1" }, new SelectListItem() { Text = "ارسال گروهی 1", Value = "2" }, new SelectListItem() { Text = " ارسال گروهی 2", Value = "3" } }, new { @class = "form-control", @id = "ActionType", @name = "ActionType" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.ApiKey)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.ApiKey, htmlAttributes: new { @class = "form-control ltr", type = "", @id = "", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group hide" id="SendGroupId">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.GroupId)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.GroupId, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.BodyMassage)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.BodyMassage, htmlAttributes: new { @class = "form-control", type = "", @id = "", rows = "5", required = "required" })
+                        <div class="help-block">در اسال گروهی پیام ها را با Enter از هم جدا نمایید.  </div>
+
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.NumberSender)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.NumberSender, htmlAttributes: new { @class = "form-control", type = "", @id = "", required = "required", rows = "5" })
+                        <div class="help-block">در اسال گروهی شماره ها را با Enter از هم جدا نمایید.  </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.NumberReceptor)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.NumberReceptor, htmlAttributes: new { @class = "form-control", type = "", @id = "", required = "required", rows = "5" })
+                        <div class="help-block">در اسال گروهی شماره ها را با Enter از هم جدا نمایید.  </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.SendData)</label>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBoxFor(model => model.SendData, htmlAttributes: new { @class = "form-control", type = "", @id = "txtDate", required = "required" , @readonly = "readonly" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.SendHourse)</label>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.SendHourse, htmlAttributes: new { @class = "form-control", type = "", @id = "timepicker1" , @readonly = "readonly" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.CheckMessageIds)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.CheckMessageIds, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="col-md-8 col-md-offset-2   ">
+                        <button id="" href="#" class="btn btn-success" type="submit">
+                            <i class="fa fa-send"></i>
+                            <span>ارسال اطلاعات</span>
+                        </button>
+                    </div>
+                </div>
+            
+            }
+        </div>
+    </div>
+    </div>
+    @section sec_script{
+        <script>
+        $("#datepicker2").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true
+        });
+        $('#timepicker1').timepicker({
+            minuteStep: 1,
+            showMeridian: false,
+        });
+        $('#ActionType').on("keyup  , change ,keydown ", function () {
+            var value = $(this).val();
+            if (value == 2 || value==3) {
+                $('#SendGroupId').removeClass('hide').show();
+            }
+            else if (value == 1) {
+                $('#SendGroupId').addClass('hide');
+            }
+        })
+        </script>
+    }

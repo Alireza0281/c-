@@ -1,0 +1,236 @@
+@font-face {
+    font-family: 'IRANSansWeb';
+    src: url('fonts/IRANSansWeb.ttf') format('truetype'), url('fonts/IRANSansWeb.woff') format('woff');
+}
+
+html,
+body {
+  height: 100%;
+  background: #f8f8f8;
+  direction: rtl;
+  font-family: IRANSansWeb;
+  font-size: 14px;
+}
+
+a,
+a:hover,
+a:active { text-decoration: none; color: #000; font-weight: 600;}
+
+a {
+  color: #333;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ltr{
+    direction:ltr;
+}
+p{
+  font-size: 1em;
+  font-family: IRANSansWeb;
+}
+.p-tab{
+	font-size: 85%;
+}
+a:hover { transition: all 100ms ease-in-out;
+text-decoration: none;
+}
+
+.sidebar{
+	margin-top: 5%;
+}
+.sidebar-icon {
+  position: relative;
+  float: right;
+  margin-top: 32px;
+  border: 1px solid #454a54;
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  color: #888;
+  background-clip: padding-box;
+  text-shadow: 4px 4px 6px rgba(0,0,0,0.4);
+}
+
+.fa-html5 {
+  color: #fff;
+  margin-left: 50px;
+}
+.menu-top-border{
+  border-top:1px solid #bbb;
+}
+
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.text-center{
+  text-align: center;
+}
+.rtl{
+  direction: rtl;
+}
+.ltr{
+  direction: ltr;
+}
+.top-3{
+  margin-top: 3%;
+}
+.top-2{
+  margin-top: 3%;
+}
+.left-3{
+  margin-left: 3%;
+}
+.right-3{
+  margin-right: -5%;
+}
+.gray{
+	color:#333;
+}
+.width-73{
+	width: 73%;
+	margin-right: 1%;
+}
+.margin-right{
+	margin-right: 13% ;
+}
+th {
+     text-align: left;
+}
+.bold{
+	color: #333;
+	font-family:'IRANSansWeb-bold';
+}
+.blue{
+  color: #00a8de;
+}
+.gray{
+  color: #888;
+}
+.red{
+  color:red;
+}
+.green{
+  color: #38bb3d;
+}
+.orange{
+  color:orange;
+}
+.purple{
+  color: purple;
+}
+.size-18{
+  font-size: 18px;
+}
+.size-20{
+  font-size: 18px;
+}
+.size-14{
+  font-size: 14px;
+}
+.size-16{
+  font-size: 16px;
+}
+.size-1-1{
+	font-size: 1.1em;
+	line-height: 2.2em;
+}
+.top-3{
+  margin-top: 3%;
+}
+.top-2{
+  margin-top: 2%;
+}
+.eng{
+	font-family:'OpenSans-Regular';
+}
+.eng-bold{
+	font-family:'OpenSans-bold';
+
+}
+
+/*-bt-classes-chaneges----------------------------------*/
+.jumbotron p{
+  margin-bottom: 15px;
+      font-size: 1.15em;
+      font-weight: 200;
+      line-height: 2.5em;
+      padding: 3%;
+}
+.jumbotron {
+    padding: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #f8f8f8;
+		 box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs>li>a {
+    margin-left: auto;
+    margin-right: -2px;
+    border-radius: 4px 4px 0 0;
+    font-size: 13px;
+    font-style: normal;
+    color: #888;
+}
+.heder {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 2.5em;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+ pre{
+	 display: block;
+padding: 9.5px;
+margin: 0 0 10px;
+font-size: 13px;
+line-height: 1.42857143;
+color: #666;
+word-break: break-all;
+word-wrap: break-word;
+border: 1px solid #e7e7e7;
+border-radius: 4px;
+background-color: #d9ecef;
+ }
+ .panel-default>.panel-heading {
+    color: #333;
+    background-color: #fdf5e6;
+    border-color: #ddd;
+}
+
+
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 11px 15px;
+}
+
+.dropdown-menu{
+    right:auto ;
+}
+.help-block{
+
+    color: #999999;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

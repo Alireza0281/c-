@@ -1,0 +1,90 @@
+﻿@model ApiSample.Models.ViewModel.VoiceViewModel
+@{
+    ViewBag.Title = "ارسال فایل صوتی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 top-2">
+        <p class="heder" id="simplesend">ارسال فایل صوتی</p>
+        <div class="form-horizontal">
+            @if (TempData["Massage"] != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12   padding-right-0 padding-left-0  float-right   ">
+                        @Html.Raw(TempData["Massage"])
+                    </div>
+                </div>
+            }
+
+            @using (Html.BeginForm("SendFile", "Voice", new { area = string.Empty }, FormMethod.Post, htmlAttributes: new { @class = "margin-bottom-0", @id = "" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.ApiKey)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.ApiKey, htmlAttributes: new { @class = "form-control ltr", type = "", @id = "", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.FileId)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.FileId, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.SendDate)</label>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBoxFor(model => model.SendDate, htmlAttributes: new { @class = "form-control", type = "", @id = "txtDate", required = "required", @readonly = "readonly" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.SendHourse)</label>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.SendHourse, htmlAttributes: new { @class = "form-control", type = "", @id = "timepicker3", @readonly = "readonly" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.NumberReceptor)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.NumberReceptor, htmlAttributes: new { @class = "form-control", type = "", @id = "", required = "required", rows = "5" })
+                        <div class="help-block"> شماره ها را با Enter از هم جدا نمایید.  </div>
+                    </div>
+                </div>
+    
+                <div class="form-group ">
+                    <div class="col-md-8 col-md-offset-2   ">
+                        <button id="" href="#" class="btn btn-success" type="submit">
+                            <i class="fa fa-send"></i>
+                            <span>ارسال اطلاعات</span>
+                        </button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+@section sec_script{
+    <script>
+        $("#datepicker3").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true
+        });
+        $('#timepicker3').timepicker({
+            minuteStep: 1,
+            showMeridian: false,
+        });
+    </script>
+}

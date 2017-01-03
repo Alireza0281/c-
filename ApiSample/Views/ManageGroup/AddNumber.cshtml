@@ -1,0 +1,104 @@
+﻿@model ApiSample.Models.ViewModel.GroupbViewModel
+@{
+    ViewBag.Title = " افزودن شماره به گروه ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--simplesend--------------------------------------------------------------------------------------------------------------------------------->
+<div class="row">
+    <div class="col-md-12 col-sm-12 top-2">
+        <p class="heder" id="simplesend">افزودن شماره به گروه </p>
+        <div class="form-horizontal">
+            @if (TempData["Massage"] != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12   padding-right-0 padding-left-0  float-right   ">
+                        @Html.Raw(TempData["Massage"])
+                    </div>
+                </div>
+            }
+
+            @using (Html.BeginForm("AddNumber", "ManageGroup", new { area = string.Empty }, FormMethod.Post, htmlAttributes: new { @class = "margin-bottom-0", @id = "" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.ApiKey)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextAreaFor(model => model.ApiKey, htmlAttributes: new { @class = "form-control ltr", type = "", @id = "", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.GroupId)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.GroupId, htmlAttributes: new { @class = "form-control", type = "", @id = "", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.PhoneNumber)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-control", type = "", @id = "", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.FirstName)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.FirstName, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.LastName)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.LastName, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.Email)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control", type = "", @id = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.Gender)</label>
+                    <div class="col-md-5 col-sm-12">
+                        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem> { new SelectListItem() { Text = "زن", Value = "خانم" }, new SelectListItem() { Text = "مرد", Value = "آقا" } }, new { @class = "form-control", @id = "", @name = "" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2  col-sm-12 margin-bottom-6 text-right padding-top-5">@Html.DisplayNameFor(model => model.Birthday)</label>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBoxFor(model => model.Birthday, htmlAttributes: new { @class = "form-control", type = "", @id = "txtDate", required = "required", @readonly = "readonly" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="col-md-8 col-md-offset-2   ">
+                        <button id="" href="#" class="btn btn-success" type="submit">
+                            <i class="fa fa-send"></i>
+                            <span>ارسال اطلاعات</span>
+                        </button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+@section sec_script{
+    <script>
+        $("#datepicker2").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true
+        });
+    </script>
+}
